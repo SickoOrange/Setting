@@ -1,24 +1,12 @@
-1. 启动默认的权限管理器 
-sudo dde-file-manager
-2. deepin安装java环境
-deepin 15.1配置java环境
-最近刚安装了最新版的Linux deepin15.1想着把java的开发环境搭建一下，在云盘中下载了Linux版本的JDK7的软件包。 
-使用命令 sudo gedit /etc/profile打开配置文件，讲java的配置添加到该环境下，就保存了，重启电脑。打开终端，运行javac，奇怪的事情出来了，“找不到命令”，期初以为是我把环境变量配置错了，仔细看了好几遍，没写错啊，这是怎么回事呢？？？百思不得姐啊。。。。 
-最后谷歌了一下，发现最新版的Deepin15.1配置java环境有些变化，需要在/etc/environment文件中配置，具体什么原因我也没找到，不过问题到时解决了，配置如下： 
-运行命令：sudo gedit /etc/environment 
-在文件中添加
-
-//注意路径填写成你解压后的JDK路径
-# Java Environment Config
-export JAVA_HOME=/home/listener_gao/Develop/jdk1.7.0_79 
-export PATH=$JAVA_HOME/bin:$PATH 
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar 
-
-保存后与运行： 
-source/etc/environment 或者 . /etc/environment 
-对这个编辑进行生效处理。 
-验证，输入javac-version，那个熟悉的版本信息出来了。。
-3. 数据库文件导入与导出
+1.configurate java develop environment
+sudo gedit /ect/profile
+-- at last line append:
+export JAVA_HOME=/usr/jdk1.8.0_101
+export JRE_HOME=$JAVA_HOME/jre
+export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+source /etc/profile
+3. import and export the database file to the database
 1.导出整个数据库
 
 　　mysqldump -u 用户名 -p 数据库名 > 导出的文件名
